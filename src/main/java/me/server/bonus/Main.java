@@ -15,7 +15,7 @@ import java.util.*;
 
 public class Main extends JavaPlugin implements Listener {
 
-    // ===== SYSTEMS =====
+    // ===== СИСТЕМЫ =====
     private final HashMap<String, Location> pos1 = new HashMap<>();
     private final HashMap<String, Location> pos2 = new HashMap<>();
     private final HashMap<String, Region> regions = new HashMap<>();
@@ -27,7 +27,7 @@ public class Main extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(this, this);
     }
 
-    // ================= REGION =================
+    // ================= РЕГИОН =================
     static class Region {
         String name;
         Location p1, p2;
@@ -59,7 +59,7 @@ public class Main extends JavaPlugin implements Listener {
         }
     }
 
-    // ================= PROTECTION =================
+    // ================= ЗАЩИТА =================
     @EventHandler
     public void breakBlock(BlockBreakEvent e) {
         if (!canBuild(e.getPlayer(), e.getBlock().getLocation())) {
@@ -90,7 +90,7 @@ public class Main extends JavaPlugin implements Listener {
         lastDeath.put(e.getEntity().getName(), e.getEntity().getLocation());
     }
 
-    // ================= COMMANDS =================
+    // ================= КОМАНДЫ =================
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -98,7 +98,7 @@ public class Main extends JavaPlugin implements Listener {
 
         switch (cmd.getName().toLowerCase()) {
 
-            // ===== ADMIN =====
+            // ===== АДМИН =====
             case "admin" -> {
                 if (args.length < 2) return true;
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
@@ -106,7 +106,7 @@ public class Main extends JavaPlugin implements Listener {
                 p.sendMessage("§aГруппа выдана");
             }
 
-            // ===== CORE =====
+            // ===== ЯДРО =====
             case "fly" -> p.setAllowFlight(!p.getAllowFlight());
 
             case "heal" -> {
@@ -116,7 +116,10 @@ public class Main extends JavaPlugin implements Listener {
 
             case "feed" -> p.setFoodLevel(20);
 
-            case "coords" -> p.sendMessage("X:" + p.getX() + " Y:" + p.getY() + " Z:" + p.getZ());
+            case "coords" -> {
+                Location loc = p.getLocation();
+                p.sendMessage("X:" + loc.getX() + " Y:" + loc.getY() + " Z:" + loc.getZ());
+            }
 
             case "ping" -> p.sendMessage("§aPing: ~50ms");
 
@@ -153,7 +156,7 @@ public class Main extends JavaPlugin implements Listener {
                 tpa.remove(p.getName());
             }
 
-            // ===== SHOP =====
+            // ===== МАГАЗИН =====
             case "shop" -> {
                 Inventory inv = Bukkit.createInventory(null, 27, "§6Shop");
 
@@ -174,7 +177,7 @@ public class Main extends JavaPlugin implements Listener {
                 Bukkit.dispatchCommand(p, "//set " + args[0]);
             }
 
-            // ===== REGIONS =====
+            // ===== РЕГИОНЫ =====
             case "rg" -> {
                 if (args.length == 0) return true;
 
