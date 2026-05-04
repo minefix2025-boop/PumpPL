@@ -1,12 +1,21 @@
-name: DailyReward
-version: 1.0
-main: ru.yourname.dailyreward.Main
-api-version: 1.16 # Укажи свою версию (1.12, 1.16, 1.20 и т.д.)
+name: PumpCore
+version: 3.0
+main: me.server.bonus.Main
+api-version: 1.16
+
 commands:
-  reward:
-    description: Получить ежедневную награду
-  lefttime:
-    description: Посмотреть сколько осталось ждать
-  skiptime:
-    description: Сбросить время ожидания (для тестов)
-    permission: dailyreward.admin
+  admin:
+  fly:
+  heal:
+  feed:
+  coords:
+  ping:
+  rtp:
+  back:
+  tpa:
+  tpaccept:
+  tpdeny:
+  shop:
+  wand:
+  set:
+  rg:
